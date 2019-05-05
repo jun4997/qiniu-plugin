@@ -1,5 +1,6 @@
 # qiniu-plugin
 Jenkins 的七牛插件,可以将构建好的结果上传到七牛.
+插件包下载地址: [qiniu-plugin](https://github.com/jun4997/qiniu-plugin/releases)
 
 1. 在全局配置里设置 App Key 和 Secret Key
 ![](./resources/globalconfigure.png)
