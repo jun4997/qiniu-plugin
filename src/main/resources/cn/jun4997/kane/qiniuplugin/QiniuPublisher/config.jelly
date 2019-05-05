@@ -1,0 +1,40 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+  <f:entry>
+  <f:repeatable var="jobProfile" items="${instance.entries}">
+    <table width="100%">
+      <f:entry title="七牛配置项" field="qiniuprofile">
+       <select class="setting-input" name="qiniu.profileName" description="选择预先设置好的七牛配置项">
+         <j:forEach var="s" items="${descriptor.profiles}">
+           <f:option selected="${s.name==jobProfile.profileName}" value="${s.name}">${s.name}</f:option>
+         </j:forEach>
+       </select>
+      </f:entry>
+      
+      <f:entry title="文件路径" field="qiniusource">
+        <f:textbox name="qiniu.source" value="${jobProfile.source}" />
+      </f:entry>
+      
+      <f:entry title="去掉上传文件前缀" field="removePrefix">
+        <f:textbox name="qiniu.removePrefix" value="${jobProfile.removePrefix}" />
+      </f:entry>
+      
+      <f:entry title="要上传到的空间" field="qiniubucket">
+        <f:textbox name="qiniu.bucket" value="${jobProfile.bucket}" />
+      </f:entry>
+      <f:entry title="构建失败是否上传">
+	    <f:checkbox name="qiniu.isUploadOnFailure" checked="${jobProfile.isUploadOnFailure}"/>
+      </f:entry>
+      <f:entry title="如果已存在是否覆盖">
+        <f:checkbox name="qiniu.isUploadOnExists" checked="${jobProfile.isUploadOnExists}"/>
+      </f:entry>
+      <f:entry title="">
+        <div align="right">
+          <f:repeatableDeleteButton />
+        </div>
+      </f:entry>
+    
+    </table>
+  </f:repeatable>
+  </f:entry>      
+</j:jelly>

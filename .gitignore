@@ -1,0 +1,14 @@
+bin/
+work/
+target/
+.classpath
+.project
+.settings
+.git
+*.iml
+*.ipr
+*.iws
+.idea/
+*~
+*.swp
+*.swo
